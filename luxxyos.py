@@ -1,4 +1,5 @@
-#Programa de prueba ocultación y encriptación de contraseña en un login bir luxxy
+#Programa de prueba ocultación y encriptación de contraseña en un login by 5kidRo0t // Luxxy
+#El usuario es Luxxy y la contraseña es iloveyou1234
 
 import hashlib, getpass, os, time
 os.system("clear")
@@ -6,7 +7,7 @@ os.system("clear")
 nombre="luxxy"
 se= "\033[92m" + ("x" * 70) + "\033[0m"
 user = "Luxxy"
-intentos = 1
+intentos = 3
 while intentos > 0:
     print(se, "\033[93m\nBIENVENIDO A LUXXY OS\nA continuación se le indicará que ingrese el usuario y la contraseña.\033[0m")
     print(se, "\n")
@@ -15,13 +16,13 @@ while intentos > 0:
     passin = getpass.getpass("Ahora introduce la contraseña: ")
     encript = hashlib.sha512(passin.encode()).hexdigest()
     if userin == user and encript == pas:
+        intentos = -1
         print("\033[96m¡Enhorabuena! has introducido los datos correctamente.\nBienvenido al sistema Luxxy OS, si necesita mas informacion teclee [help]\033[0m")
     if userin != user and encript != pas:
         intentos -= 1
-        os.system("clear")
-    if intentos < 1:
-        print("\033[91mEres gilipollas y te quedan ", intentos, "intentos.\n\033[0m")
+        print("\033[91mEres gilipollas y te quedan", intentos, "intentos.\n\033[0m")
         os.system("sleep 3")
+        os.system("clear")
     if intentos == 0:
         def mostrar_texto_progresivo(texto, delay=0.07):
             for i in range(len(texto)):
@@ -68,12 +69,12 @@ while intentos > 0:
                 carpeta="/home"
             if carpeta == "/home/luxxy/Desktop":
                 carpeta="/home/luxxy"
-    comandos={"pwd":whoami, "ls":listar, "cd ..":atras, ("cd "+ficheros):entrar}
-    while True:
-        terminal = input("root@luxxy~$ ")
-        if terminal in comandos:
+comandos={"pwd":whoami, "ls":listar, "cd ..":atras, ("cd "+ficheros):entrar}
+while True:
+    terminal = input("root@luxxy~$ ")
+    if terminal in comandos:
             comandos[terminal]()
-        if terminal == "help":
-            print("exit-----para apagar el sistema")
-        if terminal == "exit":
-            break
+    if terminal == "help":
+            print("exit-----para salir")
+    if terminal == "exit":
+        break
